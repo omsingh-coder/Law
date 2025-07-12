@@ -1,0 +1,28 @@
+/* style.css - Global Styles for MyLaw */
+
+body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; color: #222; }
+
+h1, h2, h3, h4 { margin: 0; padding: 0; }
+
+input, button { font-family: inherit; }
+
+/* Entry Page */ .entry-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: linear-gradient(to right, #002244, #005580); color: white; padding: 20px; text-align: center; }
+
+.entry-container h1 span { color: #FFD700; }
+
+.entry-container form { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; width: 100%; max-width: 400px; }
+
+.entry-container input { padding: 12px; border: none; border-radius: 8px; font-size: 16px; outline: none; }
+
+.entry-container button { padding: 12px; background-color: #FFD700; color: #002244; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; }
+
+.entry-container button:hover { background-color: #ffc400; }
+
+/* Utility */ .section-grid a { text-decoration: none; }
+
+/* Scrollbar Styling */ ::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar-thumb { background-color: #888; border-radius: 10px; }
+
+::-webkit-scrollbar-thumb:hover { background-color: #555; }
+

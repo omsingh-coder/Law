@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPC Sections - MyLaw</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      color: #002244;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .search-bar input {
+      padding: 10px;
+      width: 320px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .ipc-section {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .ipc-section h2 {
+      color: #004080;
+    }
+    .ipc-section p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>100 Important IPC Sections</h1>  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search IPC section by number or keyword...">
+  </div>  <div id="ipcList"></div>  <script>
+    const ipcSections = [
+      { number: "IPC Section 1", title: "Title and extent of operation of the Code", description: "This Act shall be called the Indian Penal Code, and shall extend to the whole of India." },
+      { number: "IPC Section 2", title: "Punishment of offences committed within India", description: "Every person shall be liable to punishment under this Code for every act or omission contrary to its provisions committed within India." },
+      { number: "IPC Section 3", title: "Punishment of offences committed beyond India", description: "Any person liable, by any Indian law, to be tried for an offence committed beyond India shall be dealt with according to the provisions of this Code." },
+      { number: "IPC Section 4", title: "Extension of Code to extra-territorial offences", description: "Deals with offences committed outside India by citizens or on Indian registered ships or aircrafts." },
+      { number: "IPC Section 6", title: "Definitions in the Code to be understood subject to exceptions", description: "Every definition and penal provision must be read with exceptions." },
+      { number: "IPC Section 7", title: "Sense of expression once explained", description: "Defines how expressions shall be understood in the Code." },
+      { number: "IPC Section 8", title: "Gender", description: "The pronoun 'he' and its derivatives are used for any person, whether male or female." },
+      { number: "IPC Section 9", title: "Number", description: "Words importing the singular number include the plural number and vice versa." },
+      { number: "IPC Section 10", title: "Man, Woman", description: "Man denotes a male human being of any age; woman denotes a female human being of any age." },
+      { number: "IPC Section 19", title: "Judge", description: "The word 'Judge' includes every person legally empowered to give a definitive judgment." },
+      { number: "IPC Section 21", title: "Public Servant", description: "Defines categories of individuals who are considered public servants under Indian law." },
+      { number: "IPC Section 24", title: "Dishonestly", description: "Doing anything with the intention of causing wrongful gain or loss." },
+      { number: "IPC Section 25", title: "Fraudulently", description: "Doing something with intent to defraud." },
+      { number: "IPC Section 29", title: "Document", description: "Any matter expressed or described upon any substance by means of letters, figures or marks." },
+      { number: "IPC Section 30", title: "Valuable security", description: "A document which is or purports to be a document whereby any legal right is created, extended, transferred, restricted, extinguished or released." },
+      { number: "IPC Section 34", title: "Acts done by several persons in furtherance of common intention", description: "When a criminal act is done by several persons in furtherance of the common intention of all." },
+      { number: "IPC Section 76", title: "Act done by a person bound, or by mistake of fact believing himself bound, by law", description: "Nothing is an offence which is done by a person who is bound by law to do it." },
+      { number: "IPC Section 80", title: "Accident in doing a lawful act", description: "Nothing is an offence which is done by accident or misfortune without any criminal intention." },
+      { number: "IPC Section 81", title: "Act likely to cause harm, but done without criminal intent, and to prevent other harm", description: "Not an offence if done in good faith to prevent greater harm." },
+      { number: "IPC Section 83", title: "Act of a child above seven and under twelve of immature understanding", description: "Not an offence if the child has not attained sufficient maturity to judge the nature and consequences of his conduct." },
+      { number: "IPC Section 84", title: "Act of a person of unsound mind", description: "Nothing is an offence which is done by a person who, at the time of doing it, is incapable of knowing the nature of the act." },
+      { number: "IPC Section 90", title: "Consent known to be given under fear or misconception", description: "A consent is not valid if given under fear or misconception." },
+      { number: "IPC Section 96", title: "Things done in private defence", description: "Nothing is an offence which is done in the exercise of the right of private defence." },
+      { number: "IPC Section 100", title: "When the right of private defence of the body extends to causing death", description: "Describes conditions where causing death is justified in self-defence." },
+      { number: "IPC Section 107", title: "Abetment of a thing", description: "A person abets the doing of a thing who instigates or engages in a conspiracy." },
+      { number: "IPC Section 120B", title: "Criminal conspiracy", description: "Defines the offence of criminal conspiracy and its punishment." },
+      { number: "IPC Section 124A", title: "Sedition", description: "Whoever brings hatred or contempt against the Government shall be punished." },
+      { number: "IPC Section 141", title: "Unlawful assembly", description: "An assembly of five or more persons with a common object to commit an offence." },
+      { number: "IPC Section 149", title: "Every member of unlawful assembly guilty of offence committed in prosecution of common object", description: "Every member is liable for the act done in pursuit of the group's object." },
+      { number: "IPC Section 153A", title: "Promoting enmity between different groups", description: "Promoting hatred between groups on grounds of religion, race, etc." },
+      { number: "IPC Section 171D", title: "Personation at elections", description: "Fraudulently voting or voting in someone else’s name." },
+      { number: "IPC Section 191", title: "Giving false evidence", description: "Whoever makes a false statement under oath." },
+      { number: "IPC Section 228A", title: "Disclosure of identity of victim of certain offences", description: "Prohibits publication of identity of victims of sexual offences." },
+      { number: "IPC Section 302", title: "Punishment for murder", description: "Punishable with death or imprisonment for life." },
+      { number: "IPC Section 304", title: "Culpable homicide not amounting to murder", description: "Punishment for causing death without intention to kill." },
+      { number: "IPC Section 307", title: "Attempt to murder", description: "Act done with intent to cause death." },
+      { number: "IPC Section 326", title: "Voluntarily causing grievous hurt by dangerous weapons", description: "Punishes grievous hurt with weapons." },
+      { number: "IPC Section 332", title: "Voluntarily causing hurt to deter public servant", description: "Punishes assault to obstruct a public servant." },
+      { number: "IPC Section 339", title: "Wrongful restraint", description: "Unlawfully preventing a person from moving in any direction." },
+      { number: "IPC Section 340", title: "Wrongful confinement", description: "Wrongfully restraining a person from proceeding beyond a certain limit." },
+      { number: "IPC Section 354", title: "Assault or criminal force to woman with intent to outrage her modesty", description: "Punishes assault or criminal force used to outrage modesty." },
+      { number: "IPC Section 375", title: "Rape", description: "Defines rape and prescribes its punishment." },
+      { number: "IPC Section 376", title: "Punishment for rape", description: "Punishment includes rigorous imprisonment or death depending on severity." },
+      { number: "IPC Section 397", title: "Robbery or dacoity with attempt to cause death or grievous hurt", description: "Punishes armed robbery with threat or hurt." },
+      { number: "IPC Section 399", title: "Making preparation to commit dacoity", description: "Punishes planning for dacoity even before execution." },
+      { number: "IPC Section 420", title: "Cheating and dishonestly inducing delivery of property", description: "Punishes the act of cheating." },
+      { number: "IPC Section 441", title: "Criminal trespass", description: "Entry into property with intent to commit an offence." },
+      { number: "IPC Section 447", title: "Punishment for criminal trespass", description: "Punishes unlawful entry into someone’s property." },
+      { number: "IPC Section 463", title: "Forgery", description: "Making a false document with intent to cause damage or injury." },
+      { number: "IPC Section 499", title: "Defamation", description: "False statement harming someone's reputation." },
+      { number: "IPC Section 504", title: "Intentional insult with intent to provoke breach of peace", description: "Intentional insult provoking a person to disturb peace." }
+    ];
+
+    const ipcList = document.getElementById("ipcList");
+    ipcSections.forEach((section) => {
+      const div = document.createElement("div");
+      div.classList.add("ipc-section");
+      div.innerHTML = `
+        <h2>${section.number} – ${section.title}</h2>
+        <p>${section.description}</p>
+      `;
+      ipcList.appendChild(div);
+    });
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      const allSections = document.querySelectorAll(".ipc-section");
+      allSections.forEach((section) => {
+        const text = section.innerText.toLowerCase();
+        section.style.display = text.includes(value) ? "block" : "none";
+      });
+    });
+  </script></body>
+</html>

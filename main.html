@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyLaw - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #1a1a1a;
+    }header.header {
+  background-color: #002244;
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header.header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+header.header p {
+  font-size: 18px;
+  color: #cccccc;
+}
+
+main.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-link {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #002244;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.section-link:hover {
+  background-color: #004080;
+  color: #ffffff;
+  transform: translateY(-4px);
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Welcome, <span id="userName">User</span> 👋</h1>
+    <p>Select a law section to begin your study</p>
+  </header>  <main class="section-grid">
+    <a class="section-link" href="articles.html">📜 Constitution Articles</a>
+    <a class="section-link" href="ipc.html">⚖ IPC Sections</a>
+    <a class="section-link" href="torts.html">🧪 Law of Torts</a>
+    <a class="section-link" href="family.html">👨‍👩‍👧‍👦 Family Law</a>
+    <a class="section-link" href="constitutional.html">📘 Constitutional Law</a>
+    <a class="section-link" href="cases.html">🎓 Famous Cases</a>
+    <a class="section-link" href="questions.html">❓ MCQ / Questions</a>
+    <a class="section-link" href="doubts.html">🗣 Ask Your Doubts</a>
+        <a class="section-link" href="chat.html">Talk Here</a>
+  </main>  <script>
+    const user = localStorage.getItem("user") || "User";
+    document.getElementById("userName").innerText = user;
+  </script></body>
+</html>
